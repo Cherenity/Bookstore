@@ -16,7 +16,7 @@ public class BookController {
   
   @GetMapping("/*")
   public String fallback() {
-      return "The requested page was not found.";
+      return "Empty page. Please check the URL.";
   }
 
 }
