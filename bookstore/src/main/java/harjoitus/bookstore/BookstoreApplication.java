@@ -19,11 +19,15 @@ public class BookstoreApplication {
 	@Bean 
 	public CommandLineRunner demo(BookRepository repository) {
 		return (args) -> {
-			Book book1 = new Book("Eka kirja", "Eka kirjailija");
+			// Haettu muutama oikea kirja netistä
+			Book book1 = new Book("Howl's Moving Castle", "Diana Wynne Jones", 1986, "9780416615906", 14.99);
 			repository.save(book1);
-			
-			Book book2 = new Book("Toinen kirja", "Toinen kirjailija", 2020, "1234567890", 19.99);
+
+			Book book2 = new Book("Stardust", "Neil Gaiman", 1999, "9780063070714", 16.99);
 			repository.save(book2);
+
+			Book book3 = new Book("Coraline", "Neil Gaiman", 2002, "9780380807345", 13.99);
+			repository.save(book3);
 
 		};
 
