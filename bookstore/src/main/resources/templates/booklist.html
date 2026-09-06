@@ -15,8 +15,15 @@
       <tr th:each="book : ${books}">
         <td th:text="${book.title}">Title</td>
         <td th:text="${book.author}">Author</td>
+        <td>
+          <a th:href="@{/deleteBook/{id}(id=${book.id})}">Delete</a>
+        </td>
+        
+        <td>
+          <a th:href="@{/editBook/{id}(id=${book.id})}">Edit</a>
+        </td>
       </tr>
-
     </table>
+    <a th:href="@{/addBook}">Add Book</a>
 
 </html>
