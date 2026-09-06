@@ -32,6 +32,10 @@ public class Book {
         this.author = author;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
