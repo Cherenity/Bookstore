@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import harjoitus.bookstore.domain.Book;
 import harjoitus.bookstore.domain.BookRepository;
+import harjoitus.bookstore.domain.CategoryRepository;
 
 
 @Controller
 public class BookController {
 
     private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
     
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository) {
         this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @GetMapping("/index")
@@ -41,6 +44,7 @@ public class BookController {
     @GetMapping("/addBook")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
@@ -60,6 +64,7 @@ public class BookController {
     public String editBook(@PathVariable("id") Long id, Model model) {
         Book book = bookRepository.findById(id).orElse(null);
         model.addAttribute("book", book);
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
     
